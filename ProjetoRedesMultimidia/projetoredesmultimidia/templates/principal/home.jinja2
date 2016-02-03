@@ -1,0 +1,16 @@
+{% extends 'templates/main.jinja2' %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ request.static_url('projetoredesmultimidia:static/css/home/body.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    <div id="body-home">
+        <section class="panel col-sm-4 col-sm-offset-4">
+            <div class="panel-body">
+                <p>Bem Vindos ao UpMind. Vamos Aprender Muito!</p>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+#body-home{
+    height: 500px;
+    background-image: url("images/aprendizado-.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 0.5;
+}
+
+#body-home section{
+    margin-top: 220px;
+    border-radius: 2em;
+}
+
