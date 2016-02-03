@@ -1,0 +1,79 @@
+{% extends "templates/main.jinja2" %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ request.static_url('projetoredesmultimidia:static/css/cursos/curso.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    <!-- Por enquanto estou usando tamanho fixos -->
+    <div id="curso_content" style="height: 800px;">
+        <section id="left" style="padding-top: 10px; margin-right: 20px; background-color: #000000; height: 700px;" class="col-sm-3">
+            <div style="width:100%; height: 160px; background-color: #245269;">
+                <img style="height: 100%; width: 100%;" src="{{ request.static_url("projetoredesmultimidia:static/images/project.jpg") }}" class="img-responsive img-rounded" data-holder-rendered="True" alt="200"/>
+            </div>
+            <hr>
+            <div style="width:100%; height: 160px;">
+                <h5>Tipo do Curso</h5>
+                <ul class="list-group">
+                    <li class="list-group-item">Nome do curso</li>
+                    <li class="list-group-item">SCORE</li>
+                    <li class="list-group-item">X Alunos</li>
+                </ul>
+            </div>
+            <hr>
+            <div style="width:100%; height: 70px;">
+                <h5>Professores</h5>
+                <ul class="list-group">
+                    <li class="list-group-item">Anderson Marques</li>
+                </ul>
+            </div>
+            <hr>
+            <div style="width:100%; height: 160px;">
+                <ul class="list-group">
+                    <li class="list-group-item" style="background-color: #bc2131; color: white;">Home</li>
+                    <li class="list-group-item">Tópicos do curso</li>
+                    <li class="list-group-item">Eventos</li>
+                    <li class="list-group-item">Grupo</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="middle" style="background-color: #ffffff; height: 800px;" class="col-sm-5">
+            <h4>home>cursos>curso></h4>
+            <h3>Descrição detalhada do curso.</h3>
+            <p>Lorem ipsum dolor sit amet, nec a feugiat ac, non vitae ac sit. Sapien ut in consectetuer sit, condimentum vehicula duis leo suscipit in, sodales tempus interdum, tellus ut id. Egestas dolorem dignissim ut laoreet sodales nibh, dignissim imperdiet morbi viverra. Nam nisl. A in ridiculus ante tempor, sit volutpat metus convallis ante laoreet, lacus risus. Vestibulum dolor cursus velit quis lacus, velit leo est etiam dis elit placerat, risus sed metus a laoreet nec sem, enim eros gravida facilisi, sit massa et et quia. Cum sed nec in pellentesque commodo, in pharetra vulputate, quis morbi elit commodo tincidunt metus, pellentesque ut arcu lectus et nullam velit. Nec suscipit scelerisque mauris id volutpat eget, dictum urna, sed erat donec auctor mauris mattis tincidunt.
+Tincidunt non, non lectus. Sed curabitur interdum eleifend eu sagittis. Eu sodales non nunc nonummy, velit vel ultrices congue in, faucibus viverra lectus lorem pede dolor. Diam quam morbi elementum, cras sapien amet sunt vulputate, nec sit euismod cras lacus ac, nulla sapien. Nullam eget enim, felis mollis et risus habitasse integer, nulla erat odio nibh dui in placerat, non vivamus augue parturient. Donec et. Eget cursus, curabitur vivamus at vel, suscipit tincidunt porta nec egestas pellentesque, omnis nisl vestibulum. Elit quam mauris blandit cursus non vel, arcu metus mauris numquam morbi gravida metus, sed vestibulum curabitur ac eget.</p>
+            <h4>Subtópico</h4>
+            <p>Elit vestibulum tortor mauris wisi, sit id suspendisse a dolores amet sed, enim accumsan augue rutrum. Integer felis, turpis adipiscing justo curabitur nisl justo tellus, in vitae, hymenaeos natus wisi volutpat, lacinia suscipit gravida sapien fringilla imperdiet nullam. Metus viverra, ut nec, inventore a vero, praesent posuere elit suscipit urna nibh vitae. Ac felis, sed eum bibendum a et, per non mattis iaculis augue mauris pulvinar. Nunc viverra aliquam mauris litora. Purus in nunc eros eget, risus iaculis eu neque, consectetuer metus taciti tortor natoque dui in, ipsum nulla purus dictum et elementum pellentesque, justo justo ac non tincidunt asperiores non. Nullam enim, elit tellus ut in elementum, lorem maecenas ut pellentesque ac metus erat, arcu at nec mauris non id. Leo morbi in fringilla leo placerat ullamcorper, ut mauris nulla pellentesque, at nec nec urna egestas est, curabitur elit cras ut. Ac sed nibh amet, curabitur vestibulum, massa vitae ac duis, magna potenti, in sed.</p>
+
+        </section>
+        <section id="right" style="padding-top: 10px; margin-left: 20px;background-color: #000000; height: 700px;" class="col-sm-3">
+            <div style="width:100%; height: 120px; padding-top: 30px; padding-left: 50px;">
+                <a href="{{ request.route_url('video_aula') }}" class="btn btn-default" style="width: 170px;background-color: #bc2131; color: white;">Fazer Curso</a>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">Duração<span class="glyphicon glyphicon-time" style="float: right;"></span></li>
+                <li class="list-group-item">Certificado<span class="glyphicon glyphicon-book" style="float: right;"></span></li>
+            </ul>
+            <hr>
+            <div style="width:100%; height: 180px;">
+                <ul class="list-group">
+                    <li class="list-group-item">Exercício online</li>
+                    <li class="list-group-item">Fórum</li>
+                    <li class="list-group-item">Membros</li>
+                    <li class="list-group-item"><a href="{{ request.route_url('live', room='1') }}">Ao vivo</a> </li>
+                    <li class="list-group-item">FAQ</li>
+                </ul>
+            </div>
+            <hr>
+            <div style="width:100%; height: 160px;">
+                <h5>Sobre Instrutor</h5>
+                <ul class="list-group">
+                    <li class="list-group-item">Anderson Marques</li>
+                    <li class="list-group-item">Mais sobre Anderson Marques</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+{% endblock %}
