@@ -9,6 +9,7 @@ import transaction
 class Initialize:
     def create_users_and_principals(self):
         user = DBSession.query(Usuario).filter(Usuario.login == "anderson").first()
+        teacher = DBSession.query(Usuario).filter(Usuario.login == "turing").first()
         print(user)
         if not user:
             user = Usuario()
@@ -21,6 +22,28 @@ class Initialize:
 
             DBSession.add(p)
             DBSession.add(user)
+            transaction.commit()
+
+        if not teacher:
+            teacher = Usuario()
+            teacher.login = "turing"
+            teacher.add_senha("science")
+            p = Principal()
+            p.nome = 'role_teacher'
+            #p.usuarios.append(user)
+            teacher.principals.append(p)
+
+            DBSession.add(p)
+            DBSession.add(teacher)
+            transaction.commit()
+
+            p = Principal()
+            p.nome = 'role_user'
+            #p.usuarios.append(user)
+            teacher.principals.append(p)
+
+            DBSession.add(p)
+            DBSession.add(teacher)
             transaction.commit()
 
     def createObjects(self):

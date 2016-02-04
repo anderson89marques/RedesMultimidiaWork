@@ -1,5 +1,5 @@
-__author__ = 'anderson'
 from projetoredesmultimidia.domain.models import Usuario, DBSession
+
 
 def groupfinder(userid, request):
     print("Request do group finder %r: userid: %r" % (request.params, userid))

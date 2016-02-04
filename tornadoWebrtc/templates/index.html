@@ -11,6 +11,12 @@
   </head>
   <body>
     <div class="container">
+
+      {{'role_user' in principals}}
+      {% for p in principals %}
+         <li>{{ p }}</li>
+      {% end %}
+
       <div class="videos">
         <video id="remote" autoplay></video>
         <video id="local" autoplay muted></video>

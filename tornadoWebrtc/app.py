@@ -5,7 +5,7 @@ from domain.models import engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from tornado.ioloop import IOLoop
 from tornado.options import define, options
-from controller.views import EchoWebSocket, MainHandler
+from controller.views import EchoWebSocket, MainHandler, LoginHandler, LogoutHandler
 import tornado
 
 rel = lambda *x: os.path.abspath(os.path.join(os.path.dirname(__file__), *x))
@@ -13,11 +13,12 @@ rel = lambda *x: os.path.abspath(os.path.join(os.path.dirname(__file__), *x))
 
 class Application(tornado.web.Application):
     def __init__(self):
-        handlers = [(r'/live/(.*)', MainHandler), (r'/ws/(.*)', EchoWebSocket),]
+        handlers = [(r'/login/(.*)', LoginHandler), (r'/live/(.*)', MainHandler),
+                    (r'/ws/(.*)', EchoWebSocket), (r'/logout', LogoutHandler)]
 
         settings = dict(static_path=rel('static'),
                         template_path=rel('templates'),
-                        debug=True,)
+                        debug=True,cookie_secret="key:ab1b90A")
 
         tornado.web.Application.__init__(self, handlers, **settings)
         self.db = scoped_session(sessionmaker(bind=engine))
