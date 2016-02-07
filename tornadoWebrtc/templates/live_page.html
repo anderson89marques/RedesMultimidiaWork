@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="pt-br" ng-app="liveApp">
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="{{static_url('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <title>Title</title>
     <title>Tornado WebRTC</title>
     <link rel="stylesheet" type="text/css" href="{{ static_url('css/kube.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ static_url('css/main.css') }}">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="{{ static_url('js/adapter.js') }}"></script>
-    <script src="{{ static_url('js/main.js') }}"></script>
-  </head>
-  <body>
+    <script src="{{static_url('js/angular/angular.min.js')}}"></script>
+    <script src="{{static_url('js/live.js')}}"></script>
+</head>
+<body ng-controller="liveAppCtrl">
+
     <div class="container">
-
-      {{'role_user' in principals}}
-      {% for p in principals %}
-         <li>{{ p }}</li>
-      {% end %}
-
       <div class="videos">
         <video id="remote" autoplay></video>
         <video id="local" autoplay muted></video>
@@ -26,8 +24,8 @@
           <li><label class="small"><input id="audio" type="checkbox" checked>Use mic</label></li>
           <li><label class="small"><input id="video" type="checkbox" checked>Use webcam</label></li>
           <li class="btn-group">
-            <button id="btn-call" class="btn" onclick="call()">I want to call</button>
-            <button id="btn-receive" class="btn" onclick="receive()">I want to receive a call</button>
+            <button id="btn-call" class="btn" ng-click="call()">I want to call</button>
+            <button id="btn-receive" class="btn" ng-click="receive()">I want to receive a call</button>
           </li>
         </ul>
       </div>
@@ -36,5 +34,5 @@
       <span id="streaming" class="small"></span>
       <span id="status" class="small"></span>
     </footer>
-  </body>
+</body>
 </html>

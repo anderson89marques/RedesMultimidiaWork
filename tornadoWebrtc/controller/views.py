@@ -8,6 +8,12 @@ class LoginException(Exception):
     pass
 
 
+class AngularHandler(RequestHandler):
+    def get(self):
+        print("Angular")
+        self.render("live_page.html", conteudo="Anderson")
+
+
 class BaseHandler(RequestHandler):
     @property
     def db(self):
@@ -35,7 +41,7 @@ class MainHandler(BaseHandler):
             return
         principals = self.get_principals(self.current_user)
         print(principals)
-        self.render('index.html', principals=principals)
+        self.render("live_page.html", principals=principals)
 
 
 class LoginHandler(BaseHandler):
