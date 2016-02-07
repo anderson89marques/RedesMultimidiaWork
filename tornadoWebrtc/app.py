@@ -14,8 +14,7 @@ rel = lambda *x: os.path.abspath(os.path.join(os.path.dirname(__file__), *x))
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [(r'/login/(.*)', LoginHandler), (r'/live/(.*)', MainHandler),
-                    (r'/ws/(.*)', EchoWebSocket), (r'/logout', LogoutHandler),
-                    (r'/angular', AngularHandler),]
+                    (r'/ws/(.*)', EchoWebSocket), (r'/logout', LogoutHandler),]
 
         settings = dict(static_path=rel('static'),
                         template_path=rel('templates'),

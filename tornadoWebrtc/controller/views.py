@@ -8,12 +8,6 @@ class LoginException(Exception):
     pass
 
 
-class AngularHandler(RequestHandler):
-    def get(self):
-        print("Angular")
-        self.render("live_page.html", conteudo="Anderson")
-
-
 class BaseHandler(RequestHandler):
     @property
     def db(self):
