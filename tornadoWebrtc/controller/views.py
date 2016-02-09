@@ -30,9 +30,11 @@ class MainHandler(BaseHandler):
             return [p.nome for p in usuario.principals]
 
     def get(self, room):
+        print(self.current_user)
         if not self.current_user:
             self.redirect('/login/{}'.format(room))
             return
+
         principals = self.get_principals(self.current_user)
         print(principals)
         self.render("live_page.html", principals=principals)
@@ -78,6 +80,12 @@ class LogoutHandler(BaseHandler):
         print('Logout')
         print(self.current_user)
         self.clear_cookie('user')
+
+    def post(self):
+        print("Chamado quando o usuário sai da página")
+        print(self.current_user)
+        self.redirect("/logout")
+        #self.clear_cookie('user')
 
 
 class EchoWebSocket(WebSocketHandler):

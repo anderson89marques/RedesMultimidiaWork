@@ -5,7 +5,7 @@ from domain.models import engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from tornado.ioloop import IOLoop
 from tornado.options import define, options
-from controller.views import EchoWebSocket, MainHandler, LoginHandler, LogoutHandler, AngularHandler
+from controller.views import EchoWebSocket, MainHandler, LoginHandler, LogoutHandler
 import tornado
 
 rel = lambda *x: os.path.abspath(os.path.join(os.path.dirname(__file__), *x))

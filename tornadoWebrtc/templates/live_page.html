@@ -5,31 +5,66 @@
     <link href="{{static_url('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <title>Title</title>
     <title>Tornado WebRTC</title>
-    <link rel="stylesheet" type="text/css" href="{{ static_url('css/kube.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ static_url('css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/live.css') }}">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="{{ static_url('js/adapter.js') }}"></script>
     <script src="{{static_url('js/angular/angular.min.js')}}"></script>
     <script src="{{static_url('js/live.js')}}"></script>
+    <script>
+       $(window).on('beforeunload', function() {
+           return 'you are an idiot!';
+       });
+
+       $(window).on("unload", function () {
+           $.ajax({
+               url: "/logout",
+               type: "GET",
+               data: {'m': 'and'}
+           });
+       });
+
+
+
+    </script>
+
 </head>
 <body ng-controller="liveAppCtrl">
+    {% if 'role_teacher' in principals%}
+        <p>É professor</p>
+        <input type="hidden" ng-model="role" value="role_teacher">
+    {% else %}
+        <p>É aluno</p>
+    {%end%}
 
-    <div class="container">
-      <div class="videos">
-        <video id="remote" autoplay></video>
-        <video id="local" autoplay muted></video>
-      </div>
-      <div class="forms">
-        <ul>
-          <li><label class="small"><input id="audio" type="checkbox" checked>Use mic</label></li>
-          <li><label class="small"><input id="video" type="checkbox" checked>Use webcam</label></li>
-          <li class="btn-group">
-            <button id="btn-call" class="btn" ng-click="call()">I want to call</button>
-            <button id="btn-receive" class="btn" ng-click="receive()">I want to receive a call</button>
-          </li>
-        </ul>
-      </div>
+
+
+    <div class="container" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-sm-7">
+
+            </div>
+            <div class="col-sm-5">
+                <div class="container">
+                    <div class="videos">
+                        <video id="remote" autoplay></video>
+                        <video id="local" autoplay muted></video>
+                    </div>
+                    <div class="forms">
+                        <ul>
+                            <li><label class="small"><input id="audio" type="checkbox" checked>Use mic</label></li>
+                            <li><label class="small"><input id="video" type="checkbox" checked>Use webcam</label></li>
+                            <li class="btn-group">
+                                <button id="btn-call" class="btn" ng-click="call()">I want to call</button>
+                                <button id="btn-receive" class="btn" ng-click="receive()">I want to receive a call</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <footer>
       <span id="streaming" class="small"></span>
       <span id="status" class="small"></span>

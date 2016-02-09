@@ -18,6 +18,7 @@ app.config(function ($interpolateProvider) {
     });
 
 app.controller("liveAppCtrl", function($scope){
+
     $scope.msg = "WebRTC";
 
     $scope.call = function () {
