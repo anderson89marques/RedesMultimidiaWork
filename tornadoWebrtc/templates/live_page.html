@@ -30,14 +30,6 @@
 
 </head>
 <body ng-controller="liveAppCtrl">
-    {% if 'role_teacher' in principals%}
-        <p>É professor</p>
-        <input type="hidden" ng-model="role" value="role_teacher">
-    {% else %}
-        <p>É aluno</p>
-    {%end%}
-
-
 
     <div class="container" style="margin-top: 20px;">
         <div class="row">
@@ -55,8 +47,13 @@
                             <li><label class="small"><input id="audio" type="checkbox" checked>Use mic</label></li>
                             <li><label class="small"><input id="video" type="checkbox" checked>Use webcam</label></li>
                             <li class="btn-group">
-                                <button id="btn-call" class="btn" ng-click="call()">I want to call</button>
-                                <button id="btn-receive" class="btn" ng-click="receive()">I want to receive a call</button>
+                                {% if 'role_teacher' in principals%}
+                                    <button  class="btn btn-call" ng-click="call('role_teacher')">I want to call</button>
+                                    <button  class="btn btn-receive" ng-click="receive('role_teacher')">I want to receive a call</button>
+                                {% else %}
+                                    <button  class="btn btn-call" ng-click="call('role_user')">I want to call</button>
+                                    <button  class="btn btn-receive" ng-click="receive('role_user')">I want to receive a call</button>
+                                {%end%}
                             </li>
                         </ul>
                     </div>

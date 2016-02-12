@@ -20,16 +20,18 @@ app.config(function ($interpolateProvider) {
 app.controller("liveAppCtrl", function($scope){
 
     $scope.msg = "WebRTC";
-
-    $scope.call = function () {
+    var role;
+    $scope.call = function (papel) {
         $('#btn-call').addClass('btn-active');
         initiator = true;
+        role = papel;
         init();
     }
 
-    $scope.receive = function () {
+    $scope.receive = function (papel) {
         $('#btn-receive').addClass('btn-active');
         initiator = false;
+        role = papel;
         init();
     }
 
@@ -39,11 +41,18 @@ app.controller("liveAppCtrl", function($scope){
             video: $('#video').prop('checked')
         };
 
-        if (constraints.audio || constraints.video) {
+        console.log(role);
+        if(role  === "role_teacher"){
+            getUserMedia(constraints, connect, fail);
+        }else{
+            connect();
+        }
+
+        /*if (constraints.audio || constraints.video) {
             getUserMedia(constraints, connect, fail);
         } else {
             connect();
-        }
+        }*/
     }
 
 
