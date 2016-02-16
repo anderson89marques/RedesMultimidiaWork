@@ -42,17 +42,17 @@ app.controller("liveAppCtrl", function($scope){
         };
 
         console.log(role);
-        if(role  === "role_teacher"){
+        /*if(role  === "role_teacher"){
             getUserMedia(constraints, connect, fail);
         }else{
             connect();
         }
-
-        /*if (constraints.audio || constraints.video) {
+        */
+        if (constraints.audio || constraints.video) {
             getUserMedia(constraints, connect, fail);
         } else {
             connect();
-        }*/
+        }
     }
 
 
