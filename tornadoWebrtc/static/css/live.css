@@ -36,3 +36,21 @@ footer {
 .error {
     color: #ff9696;
 }
+
+.class_width_border_chat {
+    width: 100%;
+    border: solid 2px blue;
+}
+
+#divconversation {
+    height: 400px;
+}
+
+#textmsg {
+    height: 100px;
+}
+
+#buttonmsg {
+    height: 30px;
+    width: 100px;
+}
