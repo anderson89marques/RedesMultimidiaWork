@@ -37,6 +37,10 @@ footer {
     color: #ff9696;
 }
 
+#content-body {
+    margin-top: 20px;
+}
+
 .class_width_border_chat {
     width: 100%;
     border: solid 2px blue;
