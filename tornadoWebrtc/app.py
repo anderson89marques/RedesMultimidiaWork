@@ -26,8 +26,8 @@ class Application(tornado.web.Application):
 
 def main():
     print("Inicializando aplicação...")
-    define('listen', metavar='IP', default='192.168.0.104', help='listen on IP address (default 127.0.0.1)')
-    define('port', metavar='PORT', default=6544, type=int, help='listen on PORT (default 8888)')
+    define('listen', metavar='IP', default='192.168.1.188', help='listen on IP address (default 127.0.0.1)')
+    define('port', metavar='PORT', default=6544, type=int, help='listen on PORT (default 6544)')
     define('debug', metavar='True|False', default=False, type=bool, 
         help='enable Tornado debug mode: templates will not be cached '
         'and the app will watch for changes to its source files '

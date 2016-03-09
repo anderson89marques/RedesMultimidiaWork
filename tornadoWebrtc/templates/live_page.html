@@ -54,8 +54,12 @@
             <div class="col-md-offset-1 col-md-5 col-lg-5 col-sm-5">
                 <div class="container">
                     <div class="videos">
-                        <video id="remote" autoplay></video>
-                        <video id="local" autoplay muted></video>
+                        {%if 'role_user' in principals%}
+                            <video id="remote" autoplay></video>
+                        {%end%}
+                        {%if 'role_teacher' in principals%}
+                            <video id="local" autoplay muted></video>
+                        {%end%}
                     </div>
                     <div class="forms">
                         <ul>

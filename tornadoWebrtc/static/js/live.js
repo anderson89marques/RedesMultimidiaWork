@@ -42,22 +42,28 @@ app.controller("liveAppCtrl", function($scope){
         };
 
         console.log(role);
-        /*if(role  === "role_teacher"){
+        if(role  === "role_teacher"){
             getUserMedia(constraints, connect, fail);
         }else{
             connect();
         }
-        */
+
+        /*
         if (constraints.audio || constraints.video) {
             getUserMedia(constraints, connect, fail);
         } else {
             connect();
         }
+        */
     }
 
+    //para tentar conectar com vários usuários e caso o remote já esteja ok
+    //não seja reconectado o que dar erro de status do sdp
+    //Solução temporaria.
+    var isRemotePlying = false;
 
+    pc = new RTCPeerConnection(null);
     function connect(stream) {
-        pc = new RTCPeerConnection(null);
 
         if (stream) {
             pc.addStream(stream);
@@ -65,8 +71,12 @@ app.controller("liveAppCtrl", function($scope){
         }
 
         pc.onaddstream = function(event) {
-            $('#remote').attachStream(event.stream);
-            logStreaming(true);
+
+            if(!isRemotePlying){
+                console.log('Adicionando Remote Stream...');
+                $('#remote').attachStream(event.stream);
+                isRemotePlying = true;
+            }
         };
         pc.onicecandidate = function(event) {
             if (event.candidate) {
@@ -75,15 +85,19 @@ app.controller("liveAppCtrl", function($scope){
         };
         ws.onmessage = function (event) {
             var signal = JSON.parse(event.data);
-            if (signal.sdp) {
+
+            if(!isRemotePlying){
+                if (signal.sdp) {
                 if (initiator) {
                     receiveAnswer(signal);
                 } else {
                     receiveOffer(signal);
                 }
-            } else if (signal.candidate) {
-                pc.addIceCandidate(new RTCIceCandidate(signal));
+                } else if (signal.candidate) {
+                    pc.addIceCandidate(new RTCIceCandidate(signal));
+                }
             }
+
         };
 
         if (initiator) {
